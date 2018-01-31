@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.klgz.xibao.widget.SwipeOverLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.klgz.xibao.widget.DrawLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="#44ff0000"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="I can be dragged !"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="#44ff0000"
+                android:gravity="center"
+                android:text="I can be dragged !"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="#44ff0000"
+                android:gravity="center"
+                android:text="I can be dragged !"/>
+        </com.klgz.xibao.widget.DrawLayout>
+
+        <com.klgz.xibao.widget.SwipeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#44000000"
+            android:minHeight="60dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_call"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="#666666"
+                    android:gravity="center"
+                    android:text="Edit"
+                    android:textColor="#ffffff"/>
+
+                <TextView
+                    android:id="@+id/tv_del"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:background="#ff0000"
+                    android:gravity="center"
+                    android:text="Delete"
+                    android:textColor="#ffffff"/>
+            </LinearLayout>
+            <!--前景布局-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#44ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_image"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@mipmap/ic_launcher"/>
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="Name"/>
+            </LinearLayout>
+
+        </com.klgz.xibao.widget.SwipeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <com.klgz.xibao.widget.NumberProgressBar
+                android:id="@+id/numberbar1"
+                style="@style/NumberProgressBar_Default"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"/>
+</com.klgz.xibao.widget.SwipeOverLayout>

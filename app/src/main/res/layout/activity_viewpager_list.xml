@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.klgz.xibao.ui.intercept.CustomScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   android:id="@+id/viewpager"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.klgz.xibao.ui.intercept.CustomListView
+        android:layout_gravity="center_vertical"
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+
+        <TextView
+            android:text="fd3333333333333333333333333333333333333333333333333333333333333334444444444444444444444444444444444444444444444444444444444444444555555555555555555444444444444444444444444444444446666666666666666666666666666666666666666666666666666666666666666666666666667777777777777777777777777777777777777777777777777777777777777777777777778555555555555555555555555555666666666666666666666666666666666666666666666666666666666666666"
+            android:layout_width="wrap_content"
+            android:layout_height="1000dp"/>
+    </LinearLayout>
+</com.klgz.xibao.ui.intercept.CustomScrollView>
