@@ -466,8 +466,6 @@ public class BitmapUtils {
                 out.close();
             }
             updateResources(context, file.getPath());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -489,8 +487,6 @@ public class BitmapUtils {
                 out.close();
             }
             updateResources(context, file.getPath());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -512,8 +508,6 @@ public class BitmapUtils {
                 out.close();
             }
             updateResources(context, file.getPath());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -2,7 +2,6 @@ package com.lzy.imagepicker.ui;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
@@ -15,7 +14,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -31,6 +29,7 @@ import com.lzy.imagepicker.utils.WeakHandler;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @SuppressWarnings("deprecation")
 public class CameraActivity extends Activity implements SurfaceHolder.Callback, View.OnClickListener {
@@ -115,13 +114,6 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback, 
         //正方形切换
         camera_square = (ImageView) findViewById(R.id.camera_square);
         camera_square.setOnClickListener(this);
-
-//        //切换正方形时候的动画
-//        homeCustom_cover_top_view = findViewById(R.id.homeCustom_cover_top_view);
-//        homeCustom_cover_bottom_view = findViewById(R.id.homeCustom_cover_bottom_view);
-//
-//        homeCustom_cover_top_view.setAlpha(0.5f);
-//        homeCustom_cover_bottom_view.setAlpha(0.5f);
 
         //拍照时动画
         home_camera_cover_top_view = findViewById(R.id.home_camera_cover_top_view);
@@ -226,15 +218,6 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback, 
                 isview = false;
             }
 
-        } else if (i == R.id.camera_square) {
-            if (index == 0) {
-                camera_square_0();
-            } else if (index == 1) {
-                camera_square_1();
-            }
-
-
-            //前后置摄像头拍照
         } else if (i == R.id.camera_frontback) {
             switchCamera();
 
@@ -322,63 +305,6 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback, 
         }
     }
 
-    /**
-     * 正方形拍摄
-     */
-    public void camera_square_0() {
-//        camera_square.setImageResource(R.drawable.btn_camera_size1_n);
-//
-//        //属性动画
-//        ValueAnimator anim = ValueAnimator.ofInt(0, animHeight);
-//        anim.setDuration(300);
-//        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-//            @Override
-//            public void onAnimationUpdate(ValueAnimator animation) {
-//                int currentValue = Integer.parseInt(animation.getAnimatedValue().toString());
-//                RelativeLayout.LayoutParams Params = new RelativeLayout.LayoutParams(screenWidth, currentValue);
-//                Params.setMargins(0, SystemUtils.dp2px(context, 44), 0, 0);
-//                homeCustom_cover_top_view.setLayoutParams(Params);
-//
-//                RelativeLayout.LayoutParams bottomParams = new RelativeLayout.LayoutParams(screenWidth, currentValue);
-//                bottomParams.setMargins(0, screenHeight - menuPopviewHeight - currentValue, 0, 0);
-//                homeCustom_cover_bottom_view.setLayoutParams(bottomParams);
-//            }
-//
-//        });
-//        anim.start();
-//
-//        homeCustom_cover_top_view.bringToFront();
-//        home_custom_top_relative.bringToFront();
-//        homeCustom_cover_bottom_view.bringToFront();
-//        index++;
-    }
-
-    /**
-     * 长方形方形拍摄
-     */
-    public void camera_square_1() {
-//        camera_square.setImageResource(R.drawable.btn_camera_size2_n);
-//
-//        ValueAnimator anim = ValueAnimator.ofInt(animHeight, 0);
-//        anim.setDuration(300);
-//        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-//            @Override
-//            public void onAnimationUpdate(ValueAnimator animation) {
-//                int currentValue = Integer.parseInt(animation.getAnimatedValue().toString());
-//                RelativeLayout.LayoutParams Params = new RelativeLayout.LayoutParams(screenWidth, currentValue);
-//                Params.setMargins(0, SystemUtils.dp2px(context, 44), 0, 0);
-//                homeCustom_cover_top_view.setLayoutParams(Params);
-//
-//                RelativeLayout.LayoutParams bottomParams = new RelativeLayout.LayoutParams(screenWidth, currentValue);
-//                bottomParams.setMargins(0, screenHeight - menuPopviewHeight - currentValue, 0, 0);
-//                homeCustom_cover_bottom_view.setLayoutParams(bottomParams);
-//            }
-//        });
-//        anim.start();
-//        index = 0;
-    }
-
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -426,7 +352,6 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback, 
             camera.setPreviewDisplay(holder);
             //亲测的一个方法 基本覆盖所有手机 将预览矫正
             CameraUtil.getInstance().setCameraDisplayOrientation(this, mCameraId, camera);
-//            camera.setDisplayOrientation(90);
             camera.startPreview();
             isview = true;
         } catch (IOException e) {
@@ -447,16 +372,8 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback, 
 
                 saveBitmap = Bitmap.createScaledBitmap(saveBitmap, screenWidth, picHeight, true);
 
-//                if (index == 1) {
-//                    //正方形 animHeight(动画高度)
-//                    saveBitmap = Bitmap.createBitmap(saveBitmap, SystemUtils.dp2px(context, 16)+mBorder.left, animHeight + SystemUtils.dp2px(context, 44), screenWidth, screenWidth);
-//                } else {
-//                    //正方形 animHeight(动画高度)
-//                    saveBitmap = Bitmap.createBitmap(saveBitmap, SystemUtils.dp2px(context, 16)+mBorder.left,SystemUtils.dp2px(context, 16)+ mBorder.top + SystemUtils.dp2px(context, 44), mBorder.right-mBorder.left, mBorder.bottom-mBorder.top);
-//                }
-//                saveBitmap = Bitmap.createBitmap(saveBitmap, SystemUtils.dp2px(context, 16)+mBorder.left,SystemUtils.dp2px(context, 16)+ mBorder.top + SystemUtils.dp2px(context, 44), mBorder.right-mBorder.left, mBorder.bottom-mBorder.top);
                 if (TextUtils.isEmpty(outPath)) {
-                    outPath = getExternalFilesDir(Environment.DIRECTORY_DCIM).getPath() +
+                    outPath = getExternalFilesDir(Environment.DIRECTORY_PICTURES)+
                             File.separator + System.currentTimeMillis() + ".jpeg";
 
                 }
@@ -470,63 +387,31 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback, 
                 if (!saveBitmap.isRecycled()) {
                     saveBitmap.recycle();
                 }
-
-                Intent intent = new Intent();
-                intent.putExtra(AppConstant.KEY.IMG_PATH, outPath);
-                intent.putExtra(AppConstant.KEY.PIC_WIDTH, screenWidth);
-                intent.putExtra(AppConstant.KEY.PIC_HEIGHT, picHeight);
-//                setResult(AppConstant.RESULT_CODE.RESULT_OK, intent);
-                setResult(AppConstant.RESULT_CODE.RESULT_OK);
-                finish();
-
-                //这里打印宽高 就能看到 CameraUtil.getInstance().getPropPictureSize(parameters.getSupportedPictureSizes(), 200);
-                // 这设置的最小宽度影响返回图片的大小 所以这里一般这是1000左右把我觉得
-//                Log.d("bitmapWidth==", bitmap.getWidth() + "");
-//                Log.d("bitmapHeight==", bitmap.getHeight() + "");
             }
         });
     }
 
-    /**
-     * 设置
-     */
+
     private void setupCamera(Camera camera) {
-        Camera.Parameters parameters = camera.getParameters();
-//
-        if (parameters.getSupportedFocusModes().contains(
-                Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
-            parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+        Camera.Parameters mCameraParameters = camera.getParameters();
+       final List<String> modes = mCameraParameters.getSupportedFocusModes();
+        if (modes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
+            mCameraParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+        } else if (modes.contains(Camera.Parameters.FOCUS_MODE_FIXED)) {
+            mCameraParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_FIXED);
+        } else if (modes.contains(Camera.Parameters.FOCUS_MODE_INFINITY)) {
+            mCameraParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_INFINITY);
+        } else {
+            if (!modes.isEmpty())
+            mCameraParameters.setFocusMode(modes.get(0));
         }
 
-        int width = context.getResources().getDisplayMetrics().widthPixels;
-//        //这里第三个参数为最小尺寸 getPropPreviewSize方法会对从最小尺寸开始升序排列 取出所有支持尺寸的最小尺寸
-        Camera.Size previewSize = CameraUtil.getInstance().getPropSizeForWidth(parameters.getSupportedPreviewSizes(), width);
-        parameters.setPreviewSize(previewSize.width, previewSize.height);
-
-        Camera.Size pictrueSize = CameraUtil.getInstance().getPropSizeForWidth(parameters.getSupportedPictureSizes(), width);
-        parameters.setPictureSize(pictrueSize.width, pictrueSize.height);
-        camera.setParameters(parameters);
+//        mCameraParameters.setPreviewSize(previewSize.width, previewSize.height);
 //
-//
-//        /*
-//         * 设置surfaceView的尺寸 因为camera默认是横屏，所以取得支持尺寸也都是横屏的尺寸
-//         * 我们在startPreview方法里面把它矫正了过来，但是这里我们设置设置surfaceView的尺寸的时候要注意 previewSize.height<previewSize.width
-//         * previewSize.width才是surfaceView的高度
-//         * 一般相机都是屏幕的宽度 这里设置为屏幕宽度 高度自适应 你也可以设置自己想要的大小
-//         *
-//         */
-//
-        picHeight = (screenWidth * pictrueSize.width) / pictrueSize.height;
-//
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(screenWidth, (screenWidth * pictrueSize.width) / pictrueSize.height);
-        //这里当然可以设置拍照位置 比如居中 我这里就置顶了
-//        params.gravity = Gravity.CENTER;
-        surfaceView.setLayoutParams(params);
+//        mCameraParameters.setPictureSize(pictrueSize.width, pictrueSize.height);
+        camera.setParameters(mCameraParameters);
     }
 
-    /**
-     * 释放相机资源
-     */
     private void releaseCamera() {
         if (mCamera != null) {
             mCamera.setPreviewCallback(null);

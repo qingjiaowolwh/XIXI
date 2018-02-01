@@ -10,6 +10,9 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,11 +23,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.activity.MainActivity"
                   android:theme="@style/MainTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".ui.activity.TestActivity">
 
@@ -36,6 +35,13 @@
         <activity android:name=".ui.activity.VideoActivity"
                   android:configChanges="orientation|keyboardHidden|screenSize">
 
+        </activity>
+        <activity android:name=".ui.activity.RecyclerViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

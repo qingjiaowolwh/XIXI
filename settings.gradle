@@ -1,1 +1,1 @@
-include ':app', ':thirdlib', ':library', ':videolibrary', ':imagepicker'
+include ':app', ':thirdlib', ':library', ':videolibrary', ':imagepicker', ':LRecyclerview_library'
