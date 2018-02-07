@@ -38,6 +38,11 @@
 
         </activity>
         <activity android:name=".ui.activity.RecyclerViewActivity">
+
+        </activity>
+
+        <activity android:name=".ui.activity.DesignActivity"
+            android:configChanges="keyboard|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

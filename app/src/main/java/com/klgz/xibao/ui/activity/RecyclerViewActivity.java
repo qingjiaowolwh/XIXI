@@ -6,6 +6,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -37,17 +38,17 @@ public class RecyclerViewActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
 
-        mLRecyclerViewAdapter.addHeaderView(new TextView(this));
-
+//        recyclerAndLocation();
     }
 
-    private void RecyclerAndLocation() {
+    private void recyclerAndLocation() {
         mRecyclerView= (LRecyclerView) findViewById(R.id.recyclerView);
         StaggeredGridLayoutManager manager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         manager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mLRecyclerViewAdapter = new LRecyclerViewAdapter(new CustomAdapter());
         mRecyclerView.setAdapter(mLRecyclerViewAdapter);
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
 
 //        for (int i = 0; i < 3; i++) {
 //            datas.add("item:"+i);
@@ -58,26 +59,13 @@ public class RecyclerViewActivity extends AppCompatActivity{
         PermissionsFragment.getInstance(this).requestPermissions(new PermissionsFragment.PermissionsCallback() {
             @Override
             public void requestSuccess() {
-//                LocationUtils.openGpsSettings(RecyclerViewActivity.this);
 
-                LocationUtils.register(RecyclerViewActivity.this, 3000, 0, new LocationUtils.OnLocationChangeListener() {
-                    @Override
-                    public void getLastKnownLocation(Location location) {
-                        datas.add("getLastKnownLocation"+"getLatitude"+location.getLatitude()+"getLatitude"+location.getLongitude());
-                        mLRecyclerViewAdapter.notifyDataSetChanged();
-                    }
+                LocationUtils.getInstance().register(RecyclerViewActivity.this, 3000, 0, new LocationUtils.OnLocationListener() {
 
                     @Override
-                    public void onLocationChanged(Location location) {
-                        datas.add("onLocationChanged"+"getLatitude"+location.getLatitude()+"getLatitude"+location.getLongitude());
+                    public void onLocation(Location location) {
+                        datas.add("onLocationChanged"+"\n"+location.toString()+"\n"+LocationUtils.getAddress(RecyclerViewActivity.this,location.getLatitude(),location.getLongitude()).toString());
                         mLRecyclerViewAdapter.notifyDataSetChanged();
-                    }
-
-                    @Override
-                    public void onStatusChanged(String provider, int status, Bundle extras) {
-                        datas.add("onStatusChanged"+provider);
-                        mLRecyclerViewAdapter.notifyDataSetChanged();
-
                     }
                 });
 

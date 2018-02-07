@@ -21,11 +21,13 @@ public class TestActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        showAlertDialog();
+//        showAlertDialog();
 //        Intent intent = new Intent();
 //        intent.setAction(Intent.ACTION_PICK);
 //        intent.setData(Contacts.People.CONTENT_URI);
 //        startActivity(intent);
+
+
 
 
     }
