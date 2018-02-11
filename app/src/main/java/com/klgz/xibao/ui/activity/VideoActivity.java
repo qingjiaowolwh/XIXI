@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.klgz.xibao.R;
-import com.klgz.xibao.ui.MacUtil;
 import com.klgz.xibao.ui.fragment.PermissionsFragment;
 import com.megvii.videolibrary.VideoPlayerController;
 import com.megvii.videolibrary.VideoPlayerView;
@@ -41,8 +40,6 @@ public class VideoActivity extends AppCompatActivity implements View.OnClickList
                 videoPlayer.setUp(url);
                 videoPlayer.setVideoPlayerController(new VideoPlayerController(VideoActivity.this));
 
-
-                MacUtil.getMacAddress(VideoActivity.this);
             }
 
             @Override
@@ -54,19 +51,25 @@ public class VideoActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     protected void onPause() {
+        if (videoPlayer!=null)
+        videoPlayer.pause();
         super.onPause();
-//        videoPlayer.pause();
+
     }
 
     @Override
     protected void onDestroy() {
-//        videoPlayer.release();
+        if (videoPlayer!=null)
+        videoPlayer.release();
         super.onDestroy();
     }
 
     @Override
     public void onBackPressed() {
-//        if (videoPlayer.onBackPressd()) return;
+        if (videoPlayer!=null){
+            if (videoPlayer.onBackPressd()) return;
+        }
+
         super.onBackPressed();
     }
 

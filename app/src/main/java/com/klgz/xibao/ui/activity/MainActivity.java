@@ -1,6 +1,5 @@
 package com.klgz.xibao.ui.activity;
 
-import android.Manifest;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
@@ -19,9 +18,6 @@ import com.klgz.library.util.SystemBarHelper;
 import com.klgz.library.widgets.swipeback.SwipeBackActivity;
 import com.klgz.xibao.ItemFragment;
 import com.klgz.xibao.R;
-import com.klgz.xibao.ui.fragment.PermissionsFragment;
-import com.lzy.imagepicker.ImagePicker;
-import com.lzy.imagepicker.utils.AppConstant;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
@@ -54,21 +50,6 @@ public class MainActivity extends SwipeBackActivity {
         initConvenientBanner(mBanner);
         initAppBar();
         initViewPagerAndTabs();
-
-        PermissionsFragment.getInstance(this).requestPermissions(new PermissionsFragment.PermissionsCallback() {
-            @Override
-            public void requestSuccess() {
-                ImagePicker imagePicker = ImagePicker.getInstance();
-                imagePicker.setCrop(false);
-                imagePicker.takePicture(MainActivity.this, AppConstant.REQUEST_CODE.CAMERA);
-            }
-
-            @Override
-            public void requestFail() {
-
-            }
-        }, Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
     }
 
     private void initViewPagerAndTabs() {
