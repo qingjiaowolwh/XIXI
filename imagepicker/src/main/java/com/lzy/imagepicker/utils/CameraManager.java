@@ -318,11 +318,15 @@ public class CameraManager {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeByteArray(data, 0, data.length, options);
-        options.inJustDecodeBounds = false;
-        int w = MIN_WIDTH;
         int h = (int) (MIN_WIDTH * 1.0f / options.outWidth * options.outHeight);
+
+        //第一次缩放后最大宽度不可能达到MIN_WIDTH的两倍
+        options.inJustDecodeBounds = false;
+        options.inSampleSize=options.outWidth/MIN_WIDTH;
         Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length, options);
-        bitmap = Bitmap.createScaledBitmap(bitmap, w, h, true);
+
+        //第二次压缩
+        bitmap = Bitmap.createScaledBitmap(bitmap,MIN_WIDTH, h, true);
         File file = new File(mContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES),
                 +System.currentTimeMillis() + ".jpeg");
         OutputStream fos = null;
