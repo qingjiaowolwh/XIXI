@@ -29,17 +29,17 @@
 
         </activity>
         <activity android:name=".ui.activity.TestActivity">
-
-        </activity>
-        <activity android:name="com.klgz.library.base.ContainerActivity">
-
-        </activity>
-        <activity android:name=".ui.activity.ViewPagerListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name="com.klgz.library.base.ContainerActivity">
+
+        </activity>
+        <activity android:name=".ui.activity.ViewPagerListActivity">
+
         </activity>
         <activity android:name=".ui.activity.VideoActivity"
                   android:configChanges="orientation|keyboardHidden|screenSize">

@@ -41,4 +41,6 @@ dependencies {
     compile project(':videolibrary')
     compile project(path: ':imagepicker')
     compile project(':LRecyclerview_library')
+    compile project(path: ':pickerview')
+    compile 'com.alibaba:fastjson:1.1.68.android'
 }

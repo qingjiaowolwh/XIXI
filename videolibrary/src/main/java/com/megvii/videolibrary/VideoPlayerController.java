@@ -124,6 +124,8 @@ public class VideoPlayerController extends FrameLayout implements View.OnClickLi
         mRetry.setOnClickListener(this);
         mReplay.setOnClickListener(this);
         mSeek.setOnSeekBarChangeListener(this);
+        mBottom.setOnClickListener(this);
+
         this.setOnClickListener(this);
     }
 
@@ -257,7 +259,7 @@ public class VideoPlayerController extends FrameLayout implements View.OnClickLi
             videoPlayer.restart();
         } else if (v == mReplay) {
             mRetry.performClick();
-        } else if (v == this) {
+        }else if (v == this) {
             if (videoPlayer.isPlaying()
                     || videoPlayer.isPaused()
                     || videoPlayer.isBufferingPlaying()

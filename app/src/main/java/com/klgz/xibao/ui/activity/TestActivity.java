@@ -15,27 +15,64 @@ import com.klgz.xibao.R;
 import com.klgz.xibao.ui.fragment.PermissionsFragment;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.utils.AppConstant;
+import com.zmnedu.pickerview.TimePickerView;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by lwh on 2017/8/30.
  */
 
 public class TestActivity extends AppCompatActivity {
+    private TimePickerView timePickerView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-//        showAlertDialog();
-//        Intent intent = new Intent();
-//        intent.setAction(Intent.ACTION_PICK);
-//        intent.setData(Contacts.People.CONTENT_URI);
-//        startActivity(intent);
-        
-        takePhoto();
+
+
+        decimalFormat();
 
 
 
 
+    }
+
+    /**
+     * 数字过大科学计算法问题
+     */
+    private void decimalFormat() {
+        DecimalFormat format=new  DecimalFormat("##.00");
+        double d=00111011111.20;
+        String str=format.format(d);
+        System.out.println("TestActivity"+str);
+    }
+
+    /**
+     * 增强for循环
+     */
+    private void iterator() {
+        List<String> list = new ArrayList<String>();
+        list.add("a1");
+        list.add("a2");
+        list.add("a3");
+        list.add("a4");
+        list.add("a5");
+
+        Iterator<String> it = list.iterator();
+        while (it.hasNext()) {
+            String v = it.next();
+            if ("a2".equals(v)) {
+                it.remove();
+            }
+        }
+
+        for (String v : list) {
+            System.out.println(v);
+        }
     }
 
     private void takePhoto() {
@@ -57,6 +94,9 @@ public class TestActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * dialog显示在底部
+     */
     private void showAlertDialog(){
         View view= LayoutInflater.from(this).inflate(R.layout.layout_dialog,null);
         AlertDialog dialog=new AlertDialog
