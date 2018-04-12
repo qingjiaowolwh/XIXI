@@ -15,7 +15,6 @@ import com.klgz.xibao.R;
 import com.klgz.xibao.ui.fragment.PermissionsFragment;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.utils.AppConstant;
-import com.zmnedu.pickerview.TimePickerView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -27,7 +26,6 @@ import java.util.List;
  */
 
 public class TestActivity extends AppCompatActivity {
-    private TimePickerView timePickerView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
