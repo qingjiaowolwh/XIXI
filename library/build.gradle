@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.jakewharton.butterknife'
+//apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 25
@@ -45,7 +45,7 @@ dependencies {
 //    ColorChooserDialog, FolderChooserDialog, the Material Preference classes, and MaterialSimpleListAdapter/MaterialSimpleListItem
 //    compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
 //    stetho
-    compile 'com.jakewharton:butterknife:8.4.0'
+//    compile 'com.jakewharton:butterknife:8.4.0'
 //    处理器
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 }

@@ -29,11 +29,7 @@
 
         </activity>
         <activity android:name=".ui.activity.TestActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name="com.klgz.library.base.ContainerActivity">
 
@@ -46,7 +42,11 @@
 
         </activity>
         <activity android:name=".ui.activity.RecyclerViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <activity android:name=".ui.activity.DesignActivity"
